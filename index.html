@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0108)file:///G:/Curriculum_2019fall/2-2%20Urban%20Informatics%20%E3%80%90yeah%E3%80%91/assignment3/viz/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Can higher education change us? </title>
+    
+
+    <style>
+        body {
+            margin: 8%;
+            top: 5%;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 10px;
+        }
+
+        .color {
+            float: left;
+            padding: 3px 5px;
+            margin: 2px 5px;
+            border-radius: 3px
+        }
+    </style>
+
+    </head><body style="background-color: white;" data-gr-c-s-loaded="true">
+    <h1 style="font-family:Stencil Std, fantasy; font-size: 40px;">Can Higher Education Change Us? <br>- Education and Economic Mobility</h1>
+
+    <script src="./index_files/d3plus.v2.js.download"></script>
+
+
+
+
+
+    <p style="font-family: Arial, sans-serif; color:dimgrey; font-size: 14px;">
+        Getting into college seems not everyone's choice when they turn into eighteen. Still, it is not because they are not willing to get a degree, or they are not interested in more knowledge. The thing is not only the luxury tuition fee these years but also the limitation on expenditure for education from families. Some people even doubt whether they can change their futures by studying hard and getting into college. Are educational opportunities equal to every kid? Does family background, especially income, make an influence on college attendance? Today, let's focus on the Northeast region of the United States (with abundant education resources) and figure it out by exploring the economic situation of kids from different colleges and their families.
+    </p>
+    <hr>
+    <h2 style="font-family: Arial, sans-serif;">Introduction and Background</h2>
+
+    <!--d3plus 1-->
+    <script>
+
+        const points = [
+            { id: "New York, 163", value: 163, point: [-73.9352, 40.7306], country: "usa" },
+            { id: "Maine, 11", value: 11, point: [-69.4455, 45.2538], country: "usa" },
+            { id: "New Hampshire, 17", value: 17, point: [-70.7201, 43.0490], country: "usa" },
+            { id: "Vermont, 10", value: 10, point: [-72.5778, 44.5588], country: "usa" },
+            { id: "Massachusetts, 78", value: 78, point: [-71.3824, 42.4072], country: "usa" },
+            { id: "Connecticut, 35", value: 35, point: [-72.6999, 41.5999], country: "usa" },
+            { id: "Rhode Island, 12", value: 12, point: [-71.4774, 41.5801], country: "usa" },
+            { id: "Pennsylvania, 122", value: 122, point: [-77.1945, 41.2033], country: "usa" },
+            { id: "New Jersey, 49", value: 49, point: [-74.8718, 39.8338], country: "usa" },
+        ];
+
+        let geomap = new d3plus.Geomap()
+            .data(points)
+            .ocean("#eff")
+            .tiles(true)
+            .render();
+
+    </script>
+    
+    </div>
+
+    <p style="font-family: Arial, sans-serif; font-size: 16px;">
+        Cluster with top colleges across the State, Northeast America can be called the ideal place to enjoy higher education. Columbia, MIT, Harvard, etc. provide tons of chances to pursue a better life, both academically and practically. But are all opportunities created equal? Does elite education open to kids from different backgrounds? We have heard a lot about the economic implication of income inequality: gaps in overall wealth accumulation, shrinking middle class, and reduced quality of life. The gaps between the rich and poor also have a significant influence on the ability to achieve educational goals among children, which can create long-lasting consequences for low-income families.
+    </p>
+
+    <!--add image-->
+
+    <div id="viz"></div>
+
+
+    <br>
+    <hr>
+
+    <!--Does a wealthier family guarantee a better college for kids?-->
+    <h2 style="font-family: Arial, sans-serif;">Does a wealthier family guarantee a better college for kids?</h2>
+
+    <p style="font-family: Arial, sans-serif; color:dimgrey; font-size: 14px;">
+        Tier 1 = Ivy Plus; eg. MIT, Harvard, Penn, Columbia, etc.    <br>
+        Tier 4 = Highly selective private; eg. Fordham University, Syracuse University, etc.   <br>
+        Tier 6 = Selective private; eg. New York Institute Of Technology, Houghton College, etc.   <br>
+        Tier 9 = Two-year (public and private not-for-profit); eg. Niagara County Community College, etc.
+    </p>
+
+    <!--d3plus 2-->
+    <script>
+
+        var data = [
+            { id: "Tier1", x: "Q1", y: 3.81 },
+            { id: "Tier1", x: "Q2", y: 5.71 },
+            { id: "Tier1", x: "Q3", y: 8.68 },
+            { id: "Tier1", x: "Q4", y: 13.17 },
+            { id: "Tier1", x: "Q5", y: 68.63 },
+            { id: "Tier4", x: "Q1", y: 4.52 },
+            { id: "Tier4", x: "Q2", y: 7.96 },
+            { id: "Tier4", x: "Q3", y: 12.45 },
+            { id: "Tier4", x: "Q4", y: 19.69 },
+            { id: "Tier4", x: "Q5", y: 55.38 },
+            { id: "Tier6", x: "Q1", y: 7.62 },
+            { id: "Tier6", x: "Q2", y: 12.31 },
+            { id: "Tier6", x: "Q3", y: 17.56 },
+            { id: "Tier6", x: "Q4", y: 24.72 },
+            { id: "Tier6", x: "Q5", y: 37.78 },
+            { id: "Tier9", x: "Q1", y: 13.72 },
+            { id: "Tier9", x: "Q2", y: 18.08 },
+            { id: "Tier9", x: "Q3", y: 21.76 },
+            { id: "Tier9", x: "Q4", y: 25.36 },
+            { id: "Tier9", x: "Q5", y: 21.07 }
+        ];
+
+        new d3plus.BarChart()
+            .config({
+                data: data,
+                discrete: "x",
+                groupBy: 'id',
+                x: "x",
+                y: "y",
+                xConfig: {
+                    title: "Fraction of parents in an income quintile. Q1 is the bottom quintile and Q5 is the top."
+                },
+                yConfig: {
+                    title: "percentage of quantile(%)"
+                }
+            })
+            .barPadding(0)
+            .groupPadding(40)
+            .render();
+
+    </script>
+
+    <br>
+    <!--d3plus 3-->
+    <script>
+
+        var data = [
+            { id: "Tier1", x: "Q1", y: 8.36 },
+            { id: "Tier1", x: "Q2", y: 6.99 },
+            { id: "Tier1", x: "Q3", y: 6.95 },
+            { id: "Tier1", x: "Q4", y: 11.77 },
+            { id: "Tier1", x: "Q5", y: 65.92 },
+            { id: "Tier4", x: "Q1", y: 8.84 },
+            { id: "Tier4", x: "Q2", y: 8.92 },
+            { id: "Tier4", x: "Q3", y: 10.06 },
+            { id: "Tier4", x: "Q4", y: 18.50 },
+            { id: "Tier4", x: "Q5", y: 53.68 },
+            { id: "Tier6", x: "Q1", y: 9.38 },
+            { id: "Tier6", x: "Q2", y: 10.54 },
+            { id: "Tier6", x: "Q3", y: 14.12 },
+            { id: "Tier6", x: "Q4", y: 24.08 },
+            { id: "Tier6", x: "Q5", y: 41.88 },
+            { id: "Tier9", x: "Q1", y: 14.61 },
+            { id: "Tier9", x: "Q2", y: 18.68 },
+            { id: "Tier9", x: "Q3", y: 22.57 },
+            { id: "Tier9", x: "Q4", y: 24.15 },
+            { id: "Tier9", x: "Q5", y: 19.99 }
+        ];
+
+        new d3plus.BarChart()
+            .config({
+                data: data,
+                discrete: "x",
+                groupBy: 'id',
+                x: "x",
+                y: "y",
+                xConfig: {
+                    title: "Fraction of kids in an income quintile. Q1 is the bottom quintile and Q5 is the top."
+                },
+                yConfig: {
+                    title: "percentage of quantile(%)"
+                }
+            })
+            .barPadding(0)
+            .groupPadding(40)
+            .render();
+
+    </script>
+
+    <p style="font-family: Arial, sans-serif; font-size: 16px;">
+        When we dig into the kids and their families from different tiers of college, it is surprising to find a clear correlation between the two. Kids from a richer family are more likely to attend top colleges. The particular evidence is shown in Tier 1( Ivy plus) group. Almost 60% of "Ivy" families are in "quintile 5", which is the most wealthy part compared to the median income of those families.  The same phenomenon happens when kids graduate from college and get a job, especially for private universities. It seems a sad story. What's worse, the gathering trend of the educational resources toward the wealth has really made upward mobility stop for the rest of the society.
+    </p>
+
+    <hr>
+
+    <!--Education and Upward Mobility-->
+    <h2 style="font-family: Arial, sans-serif;">Education and Upward Mobility</h2>
+
+    <img src="./index_files/median_income.png" height="200" style="display:ruby; margin-left: 100px; margin-right: auto; float:right; height:350px;">
+    <p style="font-family: Arial, sans-serif; font-size: 16px;text-align:left;">
+        <br>
+        Within the Northeast region of the United States, comparing parent's and kid's income (median income), there is a positive correlation between the two. Even though kids can get a degree after graduation, it is disappointing that the wealthy get wealthier, and the poor stay poor on the whole.
+        <br>
+        <br>
+        We can change our ways to chase the future through higher education. However, the inequality of opportunities to fight for a better life makes higher education impracticable for kids from minority backgrounds.
+        <br>
+        <br>
+        Now it is the right time to think about the situation. Rising tuition fees, expensive extracurricular activities, costly school-district living expenses, all of these have become a  barrier for talented kids to learn and draw the big picture of their future. What can we do? What should we do to make higher education really meet people in need?
+
+    </p>
+
+    <hr>
+    <p style="font-family:Arial, sans-serif; color:grey; font-size: 14px;">
+        Data Source: <a href="https://www.opportunityatlas.org/">The Opportunity Atlas</a>, Baseline Cross-Sectional Estimates by College
+    </p>
+
+
+
+</body></html>
